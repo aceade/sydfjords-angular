@@ -3,6 +3,7 @@
 body {
     margin: 0;
     min-width: 320px;
+    background-color: #f2f2f2;
 }
 
 
@@ -13,7 +14,7 @@ main {
     align-items: center;
     margin: 0 auto;
     justify-content: center;
-    background-color: #f2f2f2;
+    
     font-size: 1.1rem;
     max-width: 1440px;
 }

@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
-        run: pnpm run build
+        run: ng build --output-path dist --base-href /sydfjords-angular/
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact

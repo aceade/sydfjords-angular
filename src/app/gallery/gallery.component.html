@@ -1,6 +1,6 @@
 <div class="gallery">
     <div class="galleryItem" *ngFor="let item of images">
-        <img loading="lazy" class="defaultImage" v-bind:srcset="item.srcset" v-bind:sizes="item.sizes" v-bind:alt="item.altText" v-bind:src="item.source">
+        <img loading="lazy" class="defaultImage" [srcset]="item.srcset" [sizes]="item.sizes" [alt]="item.altText" [src]="item.source">
         <p>{{ item.caption }}</p>
     </div>
 </div>

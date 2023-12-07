@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { LocationComponent } from './location/location.component';
+import { HomeComponent } from './home/home.component';
+import { ColwdvatnComponent } from './colwdvatn/colwdvatn.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     GalleryComponent,
-    LocationComponent
+    LocationComponent,
+    HomeComponent,
+    ColwdvatnComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NavbarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

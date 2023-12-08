@@ -14,6 +14,7 @@ import { WhalesComponent } from './whales/whales.component';
 import { HotelsComponent } from './hotels/hotels.component';
 import { TravelComponent } from './travel/travel.component';
 import { AboutComponent } from './about/about.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { AboutComponent } from './about/about.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NavbarComponent
+    NavbarComponent,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

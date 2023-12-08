@@ -1,27 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
+
+  statusText = "";
+
+  name = new FormControl();
+  email = new FormControl();
+  message = new FormControl();
 
   async mockSend(event: Event) {
     event.preventDefault();
 
-    const name = "";
-    const email = "";
-    const message = "";
-
-    let validation = this.validateDetails(name, email, message);
+    console.info(this.name.value, this.email.value, this.message.value);
+    let validation = this.validateDetails(this.name.value, this.email.value, this.message.value);
 
     if (validation.nameValid && validation.emailValid && validation.messageValid) {
       let body = {
-        name,
-        email,
-        message,
+        name: this.name.value,
+        email: this.email.value,
+        message: this.message.value,
       }
+      console.info(body);
       let response = await window.fetch("https://aceade-express-echo.azurewebsites.net/", {
         method: "POST",
         body: JSON.stringify(body)
@@ -47,6 +53,9 @@ export class AboutComponent {
   }
 
   notifyResult(result: string) {
-
+    this.statusText = result;
+    setTimeout(() => {
+      this.statusText = "";
+    }, 3000);
   }
 }

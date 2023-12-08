@@ -25,19 +25,19 @@
     <div id="emailForm">
         <form>
             <label for="name">Your name</label>
-            <input id="name" v-model="name" required minlength="1">
+            <input id="name" [formControl]="name" required minlength="1">
             <label for="email">Your address</label>
-            <input type="email" v-model="email" id="email" required minLength="1">
+            <input type="email" [formControl]="email" id="email" required minLength="1">
             <label for="message">Your query</label>
-            <textarea id="message" v-model="message" required minlength="1"></textarea>
-            <button onClick="mockSend">Submit</button>
+            <textarea id="message" [formControl]="message" required minlength="1"></textarea>
+            <button (click)="mockSend($event)">Submit</button>
         </form>
-        <!-- <p id="submitStatus"><span>{{ statusText }}</span></p> -->
+        <p id="submitStatus"><span>{{ statusText }}</span></p>
     </div>
 
     <h2>About</h2>
     <div id="about">
-        <p>This is a practice project to get better at responsive web design. It was originally derived from <a href="https://www.frontendpractice.com/projects/monogram">this practice project</a>, but I decided to create a tourism page for a fictional setting that is part Patagonia, part Iceland.</p>
+        <p>This is a practice project, porting <a href="https://aceade.github.io/sydfjords/#/">this Vue project</a> to Angular.</p>
         <p>The email form above doesn't actually send an email; it just posts a request to an endpoint that echoes the body back. If you want to take a look at the source code, you can <a href="https://github.com/aceade/sydfjords">find it here</a>.</p>
     </div>
 </div>

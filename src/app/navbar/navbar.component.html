@@ -2,28 +2,18 @@
     <img id="logo" alt="" src="/sydfjords/icons/Sydfjords_Logo_1.png">
     <nav class="topnav">
         <a routerLink="">Home</a>
-        <a routerLink="cowldvatn">Cowldvatn</a>
-        <!-- <div class="dropdown">
-            <button className="dropbtn" @click="openSubMenu('languageMenu')">
-                <img src="/sydfjords/icons/globe.svg" id="changeLang" v-bind:alt="$t('navbar.changeLang.alt')" v-bind:title="$t('navbar.changeLang.title')" />
-            </button>
-            <div class="dropdown-content" id="languageMenu">
-                <button class="langButton" @click="$i18n.locale = locale" v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`">{{ getNativeName(locale) }}</button>
-            </div>
-        </div>
-        <routerLink to="/">{{ $t('navbar.home') }}</routerLink>
         <div class="dropdown">
-            <button class="dropbtn" @click="openSubMenu('attractionMenu')">{{ $t('navbar.see') }}</button>
+            <button class="dropbtn" onClick="openSubMenu('attractionMenu')">See and Do</button>
             <div class="dropdown-content" id="attractionMenu">
-                <routerLink to="/colwdvatn">{{ $t('navbar.colwdvatn') }}</routerLink>
-                <routerLink to="/loremvik">{{ $t('navbar.loremvik') }}</routerLink>
-                <routerLink to="/ipsumvatn">{{ $t('navbar.ipsumvatn') }}</routerLink>
-                <routerLink to="/whales">{{ $t('navbar.whales') }}</routerLink>
+                <a routerLink="cowldvatn">Cowldvatn</a>
+                <a routerLink="loremvik">Loremvik</a>
+                <a routerLink="ipsumvatn">Ipsumvatn</a>
+                <a routerLink="whales">Whale-Watching</a>
             </div>
         </div>
-        <routerLink to="/hotels">{{ $t('navbar.hotels') }}</routerLink>
-        <routerLink to="/travel">{{ $t('navbar.travel') }}</routerLink>
-        <routerLink to="/about">{{ $t('navbar.about') }}</routerLink>
-        <a class="icon" @click="openMenu()">&#9776;</a> -->
+        <a routerLink="hotels">Stay</a>
+        <a routerLink="travel">Get Here</a>
+        <a routerLink="about">About</a>
+        <a class="icon" @click="">&#9776;</a>
     </nav>
 </header>

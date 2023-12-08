@@ -1,0 +1,53 @@
+img {
+    max-width: 320px;
+    border-radius: 10%;
+}
+
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: unset;
+    max-width: 80ch;
+}
+
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .galleryItem img {
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+
+    #trains img {
+        width: calc(50% - 5px);
+        padding: 2px;
+        border-radius: 10%;
+    }
+
+
+    img {
+        max-width: 900px;
+    }
+
+    p {
+        max-width: 160ch;
+    }
+}
+/* Note to self: do NOT use "repeat" */
+@media (min-width: 1200px) {
+
+    #trains img {
+        width: calc(50% - 5px);
+        padding: 2px;
+        border-radius: 10%;
+    }
+
+    img {
+        max-width: 1080px;
+    }
+
+    p {
+        max-width: 160ch;
+    }
+}

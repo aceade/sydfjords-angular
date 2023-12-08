@@ -1,0 +1,43 @@
+<div id="container">
+    <h1>Got a query? Contact us!</h1>
+
+    <h2>Tourism offices</h2>
+    <div id="offices">
+        <div class="office">
+            <p class="officeTitle">Tinland</p>
+            <p>Grand Line Station</p>
+        </div>
+        <div class="office">
+            <p class="officeTitle">Levarche</p>
+            <p>11 Rucks Bridge</p>
+        </div>
+        <div class="office">
+            <p class="officeTitle">Colwdvatn</p>
+            <p>3 Main Square</p>
+        </div>
+        <div class="office">
+            <p class="officeTitle">Kerbalstead</p>
+            <p>Einagatan</p>
+        </div>
+    </div>
+
+    <h2>Email us</h2>
+    <div id="emailForm">
+        <form>
+            <label for="name">Your name</label>
+            <input id="name" [formControl]="name" required minlength="1">
+            <label for="email">Your address</label>
+            <input type="email" [formControl]="email" id="email" required minLength="1">
+            <label for="message">Your query</label>
+            <textarea id="message" [formControl]="message" required minlength="1"></textarea>
+            <button (click)="mockSend($event)">Submit</button>
+        </form>
+        <p id="submitStatus"><span>{{ statusText }}</span></p>
+    </div>
+
+    <h2>About</h2>
+    <div id="about">
+        <p>This is a practice project, porting <a href="https://aceade.github.io/sydfjords/#/">this Vue project</a> to Angular.</p>
+        <p>The email form above doesn't actually send an email; it just posts a request to an endpoint that echoes the body back. If you want to take a look at the source code, you can <a href="https://github.com/aceade/sydfjords">find it here</a>.</p>
+    </div>
+</div>

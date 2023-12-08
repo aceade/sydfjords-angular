@@ -1,0 +1,27 @@
+img {
+    max-width: 320px;
+}
+
+.blurb {
+    font-size: 1.5rem;
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .galleryItem img {
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+
+    img {
+        max-width: 900px;
+    }
+}
+/* Note to self: do NOT use "repeat" */
+@media (min-width: 1200px) {
+
+    img {
+        max-width: 1080px;
+    }
+}

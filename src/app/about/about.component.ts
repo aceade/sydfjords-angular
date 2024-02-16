@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 
@@ -28,7 +28,7 @@ export class AboutComponent {
         message: this.message.value,
       }
       console.info(body);
-      let response = await window.fetch("https://aceade-express-echo.azurewebsites.net/", {
+      let response = await window.fetch("https://aceade-express-echo.azurewebsites.net/api/email", {
         method: "POST",
         body: JSON.stringify(body)
       });

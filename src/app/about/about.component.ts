@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Email, EmailService } from '../email/email.service';
 
 
 @Component({
@@ -8,6 +9,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
+
+  constructor(private emailService: EmailService) {}
 
   statusText = "";
 
@@ -18,41 +21,27 @@ export class AboutComponent {
   async mockSend(event: Event) {
     event.preventDefault();
 
-    console.info(this.name.value, this.email.value, this.message.value);
-    let validation = this.validateDetails(this.name.value, this.email.value, this.message.value);
+    const senderName = this.name.value;
+    const senderAddress = this.email.value;
+    const messageText = this.message.value;
 
-    if (validation.nameValid && validation.emailValid && validation.messageValid) {
-      let body = {
-        name: this.name.value,
-        email: this.email.value,
-        message: this.message.value,
-      }
-      console.info(body);
-      let response = await window.fetch("https://aceade-express-echo.azurewebsites.net/api/email", {
-        method: "POST",
-        body: JSON.stringify(body)
+    console.info(senderName, senderAddress, messageText);
+
+    try {
+      this.emailService.sendEmail({
+        senderName, senderAddress, message: messageText
+      }).subscribe(email => {
+        console.log("Sent", email);
+        this.notifyResult("Your email has been sent");
       });
-      if (response.status === 200) {
-        this.notifyResult("Your email has been 'sent'")
-      } else {
-        this.notifyResult("Could not send your email. Please try again later")
-      }
-    } else {
-      console.log("Invalid!!");
-      this.notifyResult("Please fill out all fields");
+    } catch (err: any) {
+      this.notifyResult("Unable to send email. Please check all fields and try again");
     }
+    
   }
 
 
-  validateDetails(name: string, email: string, message: string) {
-    return {
-      nameValid: name?.length > 1,
-      emailValid: email?.length > 1,
-      messageValid: message?.length > 1
-    }
-  }
-
-  notifyResult(result: string) {
+  private notifyResult(result: string) {
     this.statusText = result;
     setTimeout(() => {
       this.statusText = "";

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { EmailService } from '../email/email.service';
+import { Email, EmailService } from '../email/email.service';
 
 
 @Component({
@@ -25,19 +25,18 @@ export class AboutComponent {
     const senderAddress = this.email.value;
     const messageText = this.message.value;
 
-    console.info(this.name.value, this.email.value, this.message.value);
+    console.info(senderName, senderAddress, messageText);
 
-    this.emailService.sendEmail({
-      senderName, senderAddress, message: messageText
-    }).subscribe({
-      next(x) {
-        console.info("Sent email", x);
-        super.notifyResult("Your email has been 'sent'");
-      },
-      error() {
-        super.notifyResult("Could not send your email. Please try again later")
-      }
-    });
+    try {
+      this.emailService.sendEmail({
+        senderName, senderAddress, message: messageText
+      }).subscribe(email => {
+        console.log("Sent", email);
+        this.notifyResult("Your email has been sent");
+      });
+    } catch (err: any) {
+      this.notifyResult("Unable to send email. Please check all fields and try again");
+    }
     
   }
 

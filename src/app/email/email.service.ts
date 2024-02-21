@@ -8,6 +8,12 @@ export interface Email {
     message: string;
 }
 
+export class ValidationError extends Error {
+    isNameValid: boolean = false;
+    isEmailValid: boolean = false;
+    isMessageValid: boolean = false;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -18,11 +24,16 @@ export class EmailService {
 
     sendEmail(body: Email): Observable<Email> {
         const validation = this.validateDetails(body);
+        console.log(validation);
         if (validation.nameValid && validation.emailValid && validation.messageValid) {
             return this.http.post<Email>(this.url, body).pipe(retry(3), catchError(this.handleError));
         }
         else {
-            return throwError(() => new Error());
+            let err = new ValidationError("Please fill out the fields");
+            err.isEmailValid = validation.emailValid;
+            err.isMessageValid = validation.messageValid;
+            err.isNameValid = validation.nameValid;
+            return throwError(() => err);
         }
     }
 

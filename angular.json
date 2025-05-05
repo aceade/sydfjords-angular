@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "sydfjords-angular:build:production"
+              "buildTarget": "sydfjords-angular:build:production"
             },
             "development": {
-              "browserTarget": "sydfjords-angular:build:development"
+              "buildTarget": "sydfjords-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sydfjords-angular:build"
+            "buildTarget": "sydfjords-angular:build"
           }
         },
         "test": {
